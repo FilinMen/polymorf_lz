@@ -2,7 +2,7 @@ import pandas as pd
 
 class Processing:
 
-    def data():
+    def data(self):
         df = pd.read_csv('var3.csv')
         
 
@@ -12,17 +12,24 @@ class Processing:
         df1.to_csv('file1.csv') #до 1000
         df2.to_csv('file2.csv') # больше 1000
 
-        duplicates1 = df1.duplicated()
-        duplicates2 = df2.duplicated()
+        self.duplicates1 = df1.duplicated()
+        self.duplicates2 = df2.duplicated()
 
-        # подсчет дубликатов
-        num_duplicates1 = duplicates1.sum()
-        num_duplicates2 = duplicates2.sum()
-        num = num_duplicates1 + num_duplicates2
-
-    def __add__():
+    def __invert__(self):
           
-        num_duplicates1 = duplicates1.sum()
-        num_duplicates2 = duplicates2.sum()
-        num = num_duplicates1 + num_duplicates2
+        self.num_duplicates1 = self.duplicates1.sum()
+        self.num_duplicates2 = self.duplicates2.sum()
+        num = self.num_duplicates1 + self.num_duplicates2
         print(num)
+    
+    def __del__(self):
+        print("DEL")
+
+def main(): 
+
+    pro = Processing()
+    pro.data()
+    ~pro
+
+if __name__ == "__main__":
+    main()
